@@ -15,7 +15,7 @@ class Customer:
             self.customer_id = 1001 + self.customer_id
 
         def __str__(self):
-
+            # Gets information about customer in string format. 
             account_list = []
             for x in self.accounts:
                 account_list.append(x.account_number)
@@ -26,7 +26,7 @@ class Customer:
 
         
     def show_customer(self):
-        
+        # Gets all the information about a customer.
         account_detail = []
         
         for account in self.accounts:
@@ -35,12 +35,12 @@ class Customer:
         return self.customer_id, self.pnr, self.first_name, self.last_name, account_detail
 
     def add_account(self):
-
+        # Adds new accont with account number, account type and balance. 
         acc = account.Account()
         self.accounts.append(acc)
         print("Done, your new account has been created!")
         return f"Account number: {acc.account_number}, \nAccount type: {acc.account_type},\n Balance: {acc.balance}"
-
+        # Closing an existing account using the account number. 
     def close_account(self, account_number):
         for x in self.accounts: 
             if account_number == x.account_number:

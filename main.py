@@ -4,7 +4,7 @@ from bank import Bank
 b = Bank
 
 def menu():
-    
+    # Menu val.    
     print("""\n Pick an Option:
     1. Add new customer
     2. Get customer by pnr
@@ -18,7 +18,7 @@ def menu():
     0. Exit.
     """)
     choice = int(input("Pick a number:\n"))
-
+    # Add new customer
     if choice == 1: 
         pnr = input("Type your security number with 10 digits: ")
         if len(pnr) !=10: 
@@ -29,7 +29,7 @@ def menu():
                 last_name = input("Please, Enter your lastname: ").capitalize
                 b.add_customer(first_name, last_name, pnr)
                 menu()
-
+    # Get customer by PNR. 
     elif choice == 2: 
         pnr = input("Find specifik customer by security number (10 digits): ")
         if len (pnr) != 10:
@@ -39,12 +39,12 @@ def menu():
             customer = b.get_customer_by_pnr(pnr)
             print(customer)
             menu()
-
+    # Get all customers. 
     elif choice == 3:
             print("This is the customer list: ")
             print(b.get_all_customers())
             menu()
-
+    # Change name for customer. 
     elif choice == 4: 
         pnr = input("Type customers security number (10 digits): ")
         if len(pnr) != 10:
@@ -54,7 +54,7 @@ def menu():
             last_name = input("Type costumers last name:").capitalize
             b.change_customer_name(pnr, first_name,last_name)
             menu()
-
+    # Remove Customer. 
     elif choice == 5:
         pnr = input("Type in the security number for the customer you want to delete")
         if len(pnr) !=10: 
@@ -63,7 +63,7 @@ def menu():
             remove = b.remove_customer(pnr)
             print(remove)
             menu()
-
+    # Add new account. 
     elif choice == 6:
         pnr = input("Enter customers security number: ")
         if len(pnr) != 10:
@@ -71,7 +71,7 @@ def menu():
         else: 
             b.add_account(pnr)
             menu()
-
+    # close an existing account. 
     elif choice == 7:
         pnr = input("Type customers security number (10 digits): ")     
         if len(pnr) != 10:
@@ -80,7 +80,7 @@ def menu():
             account_number = input ("Select an account to close")
             b.close_account(pnr, account_number)
             menu()
-
+    # find an account using PNR.
     elif choice == 8:
          pnr = input("Type customers security number (10 digits): ") 
          if len(pnr) != 10:
@@ -89,11 +89,11 @@ def menu():
             account_number = input("Select account")
             b.get_account(pnr, account_number)
             menu()
-
+    # Deposit/Withdraw 
     elif choice == 9:
         print("Choose \n1. For Deposit \n2 For Withdraw")
         option = int (input("Press the one you want."))
-
+        # Deposit
         if option == 1:
             pnr = input("Type customers security number (10 digits): ")
             
@@ -114,7 +114,7 @@ def menu():
                 deposit = b.deposit(pnr,account_number,amount)
                 print(deposit)
                 menu()
-    
+            # Withdraw 
     if option == 2:
             pnr = input("Type customers security number (10 digits): ")
             
@@ -132,7 +132,7 @@ def menu():
                     withdraw = b.withdraw(pnr,account_number,amount)
                     print(withdraw)
                     menu()
-
+    # Exit. 
     elif choice == 0:
         print("Thank you, please come again")
         

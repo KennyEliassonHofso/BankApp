@@ -5,7 +5,7 @@ class Bank:
 
     def __init__(self):
         self.customers = []
-
+    # This Method should get me the information from the text file. 
     def _load(self):
 
             for line in open("My_customer.txt").readlines():
@@ -23,7 +23,7 @@ class Bank:
                     else: 
                         print("This customer does already exist")
                     return self.customers
-
+    # Use this to get all the customers in the bank. 
     def get_all_customers(self):
                 all_customers = []
 
@@ -31,7 +31,7 @@ class Bank:
                     details = customer.pnr, customer.first_name, customer.last_name
                     all_customers.append(details)
                 return all_customers
-
+    # Adding an customer to the bank and the customer list. 
     def add_customer(self, first_name, last_name, pnr):
 
             client = customer.Customer(first_name, last_name, pnr)
@@ -54,7 +54,7 @@ class Bank:
                     
                     
     def get_customer_by_pnr(self, pnr):
-
+        # If you need to get information about a customer using the PNR. 
                 if self.customers == []:
                     print(f"Cant find any customer with PNR: {pnr}")
                 else:
@@ -64,7 +64,7 @@ class Bank:
                         else:
                             print("Cant find any customer")
                             break
-
+        # Changing the name for an existing customer. 
     def change_customer_name(self, pnr, first_name, last_name):
                 
                 if self.customers == []:
@@ -77,7 +77,7 @@ class Bank:
                         else: 
                             print (f"The person with PNR {pnr} is not a customer here")
                     return False
-
+        # Removing an existing customer. 
     def remove_customer(self, pnr):
             
         return_balance = 0
@@ -93,7 +93,7 @@ class Bank:
                 f"Returned balance: {return_balance}")
         else:
                 f"Customer with: {pnr} dosnt exist"
-
+        # Adding an account to an existing customer. 
     def add_account(self, pnr):
 
         if self.customers == []:
@@ -103,7 +103,7 @@ class Bank:
                 if pnr == x.pnr:
                     print(x.add_account())
                     break
-
+        # Finding an existing account for a existing customer. 
     def get_account(self, pnr, account_id):
         for customer in self.customers:
             if customer in self.customers:
@@ -114,7 +114,7 @@ class Bank:
                     break
             else:
                 return("Error")
-
+        # Puts money into an account. 
     def deposit(self, pnr, account_number, amount):
 
         for x in self.customers:
@@ -126,7 +126,7 @@ class Bank:
                     else:
                         print(f"{account_number} cant be found")
                         return False
-
+        # Takes money from an account.
     def withdraw(self, pnr, account_number, amount):
         for x in self.customers:
             if x.pnr == pnr:
@@ -137,6 +137,7 @@ class Bank:
                     else:
                         print(f"{account_number} cant be found")
                         return False
+        # Closing an existing account for a customer. 
     def close_account(self, pnr, account_number):
         for x in self.customers:
             if x.pnr == pnr:
